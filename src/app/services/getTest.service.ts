@@ -8,7 +8,7 @@ export class GetTestService {
     constructor(private http: Http) { }
 
     getTestPhotoList() {
-        return this.http.get("https://jsonplaceholder.typicode.com/photos")
+        return this.http.get("https://api.pokemontcg.io/v1/cards")
             .map((res) => res.json());
     }
 }

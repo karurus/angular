@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetPhotoService } from '../../services/getPhoto.service';
 import { GetTestService } from '../../services/getTest.service';
 
 @Component({
@@ -8,21 +9,22 @@ import { GetTestService } from '../../services/getTest.service';
 })
 
 export class TestComponent implements OnInit {
+    private testList: testPhoto[];
 
-    private cards: card[];
-    private response: String
     constructor(private getTestService: GetTestService) { }
 
     ngOnInit() {
         this.getTestService.getTestPhotoList().subscribe((response) => {
-
-            this.cards = response.cards
+            this.testList = response;
         })
     }
 }
-
-interface card {
-
-    name: string;
-    imageUrl: string;
+interface testPhoto {
+    count: number;
+    previous: string;
+    results: {
+        name: string,
+        url: string
+    };
+    next: string;
 }
