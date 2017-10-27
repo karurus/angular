@@ -5,18 +5,22 @@ import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { FormsModule } from '@angular/forms';
-import { GetphotoService } from './services/getphoto.service';
+import { GetPhotoService } from './services/getPhoto.service';
+import { GetTestService } from './services/getTest.service';
 import { HttpModule } from '@angular/http';
-import { RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-const appRoutes:Routes=[
-  {path:"",component:UserComponent},{path:"about",component:AboutusComponent}
+const appRoutes: Routes = [
+  { path: "", component: UserComponent },
+  { path: "about", component: AboutusComponent },
+  { path: "test", component: TestComponent }
 ]
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    AboutusComponent
+    AboutusComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,7 @@ const appRoutes:Routes=[
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ GetphotoService ],  
+  providers: [GetPhotoService, GetTestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
